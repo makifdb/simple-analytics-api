@@ -1,4 +1,6 @@
-# Simple Analytics API – Challenges and Key Learnings
+# Simple Analytics API
+
+![ezgif-595ce4716d3c8f](https://github.com/user-attachments/assets/8298fcbb-e0ea-4243-be42-453793c58734)
 
 ## Project Overview
 
