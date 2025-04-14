@@ -1,0 +1,22 @@
+services:
+  clickhouse:
+    image: clickhouse/clickhouse-server:25.3
+    container_name: clickhouse
+    ports:
+      - "8123:8123"
+      - "9000:9000"
+    volumes:
+      - clickhouse_data:/var/lib/clickhouse
+    environment:
+      - CLICKHOUSE_DB=analytics
+      - CLICKHOUSE_USER=user
+      - CLICKHOUSE_PASSWORD=password
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8123/ping || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
+
+volumes:
+  clickhouse_data:

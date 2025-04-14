@@ -1,0 +1,29 @@
+scalar UUID
+scalar Time
+scalar JSON
+
+type Event {
+    eventID: UUID!
+    userID: UUID!
+    eventType: String!
+    timestamp: Time!
+    metadata: JSON
+}
+
+type EventCount {
+    eventType: String!
+    count: Int!
+}
+
+type Query {
+    eventsByUser(userID: UUID!): [Event!]!
+    aggregateEventsByType(
+        startTime: Time!
+        endTime: Time!
+        eventType: String!
+    ): [EventCount!]!
+}
+
+type Mutation {
+    recordEvent(userID: UUID!, eventType: String!, metadata: JSON): Event!
+}
